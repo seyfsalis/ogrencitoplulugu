@@ -1,5 +1,5 @@
 class Etkinlikler:
-    def __init__(self, id, baslik, icerik, mekan, kullanici_id, grup_id):
+    def __init__(self,id, baslik, icerik, mekan, kullanici_id, grup_id):
         if id is None:
             self.id = 0
         else:

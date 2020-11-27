@@ -1,10 +1,12 @@
 import psycopg2
 
-connection = psycopg2.connect(
-    host="localhost",
-    database="toplulukdb",
-    user="postgres",
-    password="123456")
+try:
+    connection = psycopg2.connect(
+        host="localhost",
+        database="toplulukdb",
+        user="postgres",
+        password="123456")
+except Exception as err:
+    print(err)
 
-print("bağlantı başarılı")
-    
+

@@ -17,9 +17,10 @@ class DbManager:
         sql = "INSERT INTO Kullanicilar(ad, soyad, telefon, okul_no, tc, mail, sifre, yetki) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         value = (kullanici.ad, kullanici.soyad, kullanici.telefon,kullanici.okul_no, kullanici.tc, kullanici.mail, kullanici.sifre, kullanici.yetki)
         self.cursor.execute(sql, value)
-        
+        print("deneme")
         try:
             self.connection.commit()
+            print("test")
         except Exception as err:
             print("hata: ", err)
 
@@ -44,25 +45,12 @@ class DbManager:
             print("hata: ", err)
 
     def getKullanicilar(self):
-        sql = "select * from kullanicilar"
+        sql = "select * from kullanicilar ORDER BY id ASC"
         self.cursor.execute(sql)
 
         try:
             obj = self.cursor.fetchall()
-            list = []
-            for row in obj:
-                list.append(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8])
-                print(list)
-                # id = row[0]
-                # ad = row[1]
-                # soyad = row[2]
-                # telefon = row[3]
-                # okul_no = row[4]
-                # tc = row[5]
-                # mail = row[6]
-                # sifre = row[7]
-                # yetki = row[8]
-                #print(f'id={id},ad={ad},soyad={soyad},telefon={telefon},okul_no={okul_no},tc={tc},mail={mail},sifre={sifre},yetki={yetki}')
+            return Kullanicilar.CreateKullanici(obj)
         except Exception as err:
             print("hata: ", err)
             
