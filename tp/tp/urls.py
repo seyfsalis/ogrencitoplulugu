@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 from django.urls import path,include
-from grup.views import index
+from duyuru.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
