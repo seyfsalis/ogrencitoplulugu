@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>etkinlik</title>
-</head>
-<body>
-    <h1>etkinlik liste sayfası</h1>
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if etkinlikler %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Grup</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for etkinlikler in etkinlikler %}
+        <tr>
+            <th scope="row">{{etkinlikler.id}}</th>
+            <td><a href="etkinlik/{{etkinlikler.id}}">{{etkinlikler.baslik}}</a></td>
+            <td>{{etkinlikler.grup_id}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-danger">
+      etkinlik eklenmemiş
+  </div>
+{% endif %}
+
+{% endblock body %}

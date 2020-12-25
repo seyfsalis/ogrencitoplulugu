@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+
+        <!-- Title -->
+        <h2 class="mt-4">{{etkinlikler.baslik}}</h2>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          {{etkinlikler.kullanici_id.username}}
+        </p>
+
+        <!-- Preview Image -->
+        <!-- <img class="img-fluid rounded" src="http://placehold.it/900x300" alt=""> -->
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead"> {{etkinlikler.icerik}} </p>
+
+       
+
+       
+      </div>
+
+      
+
+    </div>
+
+{% endblock body %}

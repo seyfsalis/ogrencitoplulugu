@@ -1,11 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>duyuru</title>
-</head>
-<body>
-    <h1>duyuru liste sayfası</h1>
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if duyurular %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Grup</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for duyuru in duyurular%}
+        <tr>
+            <th scope="row">{{duyuru.id}}</th>
+            <td><a href="duyuru/{{duyuru.id}}">{{duyuru.baslik}}</a></td>
+            <td>{{duyuru.tarih}}</td>
+            <td>{{duyuru.grup_id}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-danger">
+      Duyuru eklenmemiş
+  </div>
+{% endif %}
+
+{% endblock body %}

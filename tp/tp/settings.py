@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'galeri',
     'django_cleanup',
     'crispy_forms',
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,16 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CKEDITOR_CONFIGS = {
+    "default" : {
+        "removePlugins": "stylesheetparser",
+        "allowContent": True,
+        "with": "100%",
+    }
+}
