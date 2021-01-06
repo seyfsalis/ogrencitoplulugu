@@ -2,6 +2,33 @@
 
 {% block body %}
 
-<h1>Forum sayfası</h1>
+<h1>Forumlar</h1>
+
+<hr>
+
+<a class = "btn btn-danger" href="/forum/forumekle">Forum Oluştur</a>
+
+<hr>
+
+
+
+{% if forumlar %}
+
+{% for forumlar in forumlar %}
+
+<div class="card card-accent-dark mb-3" style="max-width: 100rem;">
+    <div class="card-header"><h3><a href="forum/{{forumlar.id}}">{{forumlar.baslik}}</a></h3></div>
+    <div class="card-body text-dark">
+      <h6 class="card-title">{{forumlar.kullanici_id}}</h6>
+      <p class="card-text">{{forumlar.icerik}}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% else %}
+
+<div class="alert alert-danger">Henüz forum açılmamış</div>
+
+{% endif %}
 
 {% endblock body %}

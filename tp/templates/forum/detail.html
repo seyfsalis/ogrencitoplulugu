@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block body%}
+
+<div class="question-card card mb-4">
+    <!-- Card header -->
+    <div class="card-header forum-card-img-30 d-flex justify-content-between">
+        <p class="pt-2 mb-0">
+            <strong>Forum Başlığı: {{forumlar.baslik}}</strong>
+        <div>
+            
+        </div>
+    </div>
+    <!--Card content-->
+    <div class="card-body">
+        <h6>Kullanıcı: {{forumlar.kullanici_id}}</h6>
+        <hr>
+        {{forumlar.icerik}}    
+    </div>
+
+</div>
+
+
+{% if cevaplar %}
+{% for cevaplar in cevaplar %}
+<div class="question-card card mb-4">
+    <!-- Card header -->
+    <div class="card-header forum-card-img-30 d-flex justify-content-between">
+        <p class="pt-2 mb-0">
+            <strong>Cevap Yazan Kullanıcı: {{cevaplar.cevap_kullanici}}</strong>
+        <div>
+            
+        </div>
+    </div>
+    <!--Card content-->
+    <div class="card-body">
+        <!--<h6>Kullanıcı: {{cevaplar.kullanici}}</h6>-->
+        
+        {{cevaplar.mesaj}}    
+    </div>
+
+</div>
+{% endfor %}
+
+{% else %}
+
+<div class="alert alert-danger">
+    Bu foruma henüz yorum yapılmamış
+</div>
+
+{% endif %}
+
+<div class="card my-4">
+    <h5 class="card-header">Yorum ekle:</h5>
+    <div class="card-body">
+      <form method = "post" action="/forum/yorum/{{forumlar.id}}">
+        {% csrf_token %}
+        <div class="form-group">
+          <textarea name= "yorum" class="form-control" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Gönder</button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock body %}

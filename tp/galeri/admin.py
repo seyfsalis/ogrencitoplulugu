@@ -5,8 +5,8 @@ from .models import galeri
 @admin.register(galeri)
 class GaleriAdmin(admin.ModelAdmin):
 
-    list_display = ["yol"]
-    list_display_links = ["yol"]
-    search_fields = ["yol"]
+    list_display = ["ad"]
+    list_display_links = ["ad"]
+    search_fields = ["ad"]
     class Meta:
         model = galeri

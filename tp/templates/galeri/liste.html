@@ -2,6 +2,40 @@
 
 {% block body %}
 
-<h1>Galeri sayfası</h1>
+<h1>Galeri</h1>
+
+<hr>
+
+<a class = "btn btn-danger" href="/galeri/galeriekle">Fotoğraf ekle</a>
+
+<hr>
+
+
+
+{% if galeriler %}
+
+{% for galeriler in galeriler %}
+
+<div class="card">
+  <img src="{{galeriler.yol.url}}" class="card-img-top" alt=""/>
+  <div class="card-body">
+    <h5 class="card-title">{{galeriler.ad}}</h5><hr>
+    <p class="card-text">
+      {{galeriler.tarih}}
+    </p>
+    {% if request.user.is_authenticated == user.username %}
+    <a href="#!" class="btn btn-primary">Button</a>
+    {%else%}
+    {% endif %}
+  </div>
+</div>
+<br>
+{% endfor %}
+
+{% else %}
+
+<div class="alert alert-danger">Henüz galeri yok</div>
+
+{% endif %}
 
 {% endblock body %}

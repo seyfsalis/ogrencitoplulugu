@@ -2,16 +2,20 @@
 
 {% block body %}
 
-<h1 class="display-1">Anasayfa</h1>
 
-<p>
-
+<div class="jumbotron">
+    
     {% if request.user.is_authenticated %}
-        Giriş Yapılmış, {{request.user.username}}
+    <h1 class="display-4">Merhaba, {{ request.user.username}}</h1>
+    <p class="lead">Paylaşım yapman için sabırsızlanıyoruz :)</p>
+    <hr class="my-4">
     {% else %}
-        Giriş Yapılamamış
+    <h1 class="display-4">Merhaba, Öğrenci topluluğu sitemize hoşgeldiniz.</h1>
+    <p class="lead">Sitemize üye olup topluluklarla ilgili paylaşımlarda bulunabilirsiniz.</p>
+    <hr class="my-4">
+    <p>Hala üye değil misiniz? Hemen üye olun!</p>
+    <a class="btn btn-primary btn-lg" href="user/register" role="button">Kayıt Ol</a>
     {% endif %}
-
-</p>
+  </div>
 
 {% endblock body %}
